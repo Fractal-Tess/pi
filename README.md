@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="assets/pi-setup-splash.png" alt="Low-poly terminal landscape representing the Pi coding-agent setup" width="100%" />
+  <img src="assets/pi-logo.png" alt="Low-poly PI logo" width="280" />
 </p>
 
-# My Pi setup
+# pi
 
 An opinionated collection of extensions, skills, and UI customizations for the [Pi coding agent](https://pi.dev).
 

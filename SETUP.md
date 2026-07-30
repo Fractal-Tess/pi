@@ -3,7 +3,7 @@
 Clone this repository into `~/.pi/agent`, then install its dependencies:
 
 ```sh
-git clone https://github.com/Fractal-Tess/my-pi-setup.git ~/.pi/agent
+git clone https://github.com/Fractal-Tess/pi.git ~/.pi/agent
 cd ~/.pi/agent
 npm install
 ```
