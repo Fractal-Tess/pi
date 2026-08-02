@@ -5,6 +5,7 @@ npm/
 # Downloaded/generated artifacts
 bin/
 generated-images/
+.firecrawl/
 
 # Pi runtime and private state
 sessions/
