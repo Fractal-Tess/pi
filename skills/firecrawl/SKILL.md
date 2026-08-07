@@ -13,7 +13,7 @@ firecrawl --version
 firecrawl view-config
 ```
 
-The configured endpoint is normally `http://vd.netbird.cloud:38473`. Quote URLs containing `?` or `&`.
+Use the environment-managed endpoint shown by `firecrawl view-config`; do not hardcode private service addresses. Quote URLs containing `?` or `&`.
 
 ## Route
 

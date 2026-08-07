@@ -73,8 +73,8 @@ test("transcript omits thinking, images, and recap entries while redacting tool 
           name: "bash",
           arguments: {
             command:
-              "curl -H 'Authorization: Bearer very-secret-token' https://example.test",
-            apiKey: "sk-super-secret-value",
+              "curl -H 'Authorization: Bearer very-secret-token' https://example.test", // gitleaks:allow -- synthetic redaction fixture
+            apiKey: "sk-super-secret-value", // gitleaks:allow -- synthetic redaction fixture
             payload: "x".repeat(10_000),
           },
         },

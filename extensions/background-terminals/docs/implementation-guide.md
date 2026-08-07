@@ -3,8 +3,7 @@
 > Research phase output. Updated 2026-07-24 against:
 > - `effect@4.0.0-beta.101` (verified installed in this package's `node_modules/effect`; the
 >   `unstable/process` module exists there but we deliberately do NOT use it — see §6)
-> - `@earendil-works/pi-coding-agent@^0.82.0` docs at
->   `/Users/davis/.vite-plus/js_runtime/node/24.18.0/lib/node_modules/@earendil-works/pi-coding-agent/docs/`
+> - `@earendil-works/pi-coding-agent@^0.82.0` package documentation
 > - Reference implementations: `extensions/subagents` (Effect v4 service/manager/read-model/tools)
 >   and `extensions/workflows` (dashboard UI, status line, background completion follow-ups).
 >
@@ -530,7 +529,7 @@ Handler: validate cwd (§6), `title.trim().slice(0, 80) || "terminal"`, then
 prompt.ts, like `buildSubagentSpawnResult`):
 
 ```
-Started background terminal bt-3 "dev server" (pid 12345, /Users/davis/project).
+Started background terminal bt-3 "dev server" (pid 12345, /path/to/project).
 It runs in the background with no stdin. You'll get a message when it exits, or use
 bg_status(id: "bt-3") to peek, bg_kill to stop it, bg_list to see all.
 ```

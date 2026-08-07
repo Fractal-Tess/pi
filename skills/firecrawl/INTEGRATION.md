@@ -3,7 +3,7 @@
 Use for application code or configuration. Prefer direct REST for this custom deployment; the SDK path was not part of the live verification.
 
 ```bash
-FIRECRAWL_API_URL=${FIRECRAWL_API_URL:-http://vd.netbird.cloud:38473}
+FIRECRAWL_API_URL=${FIRECRAWL_API_URL:-http://localhost:3002}
 ```
 
 Direct REST requests worked without an API key. Keep the endpoint configurable and do not add hosted billing, account, credit, or webhook assumptions.

@@ -18,6 +18,15 @@ models-store.json
 extensions/summaries/config.private.json
 extensions/summaries/config.private.json.*.tmp
 
+# Local MCP configuration and generated discovery state
+mcp.json
+mcp-cache.json
+mcp-npx-cache.json
+mcp-onboarding.json
+
+# Syncthing runtime markers
+.stfolder/
+
 # Environment variables and secrets
 .env
 .env.*
