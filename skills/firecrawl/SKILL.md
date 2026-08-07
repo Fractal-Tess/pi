@@ -1,6 +1,6 @@
 ---
 name: firecrawl
-description: "Use the configured local Firecrawl CLI and REST service for verified web/news search, best-effort image search, page or PDF extraction, screenshots, site mapping and bounded crawling, browser actions, image discovery/analysis, autonomous research, or application integration. Read the documented live-test limitations before relying on image search, agent schemas, map-driven downloads, or persistent sessions."
+description: "Use the configured local Firecrawl CLI and REST service for verified web/news search, best-effort image search, page extraction, summaries, screenshots, site mapping and bounded crawling, browser actions, image discovery/analysis, autonomous research, or application integration. Read the documented live-test limitations before relying on image search, agent schemas, map-driven downloads, or persistent sessions."
 ---
 
 # Firecrawl
@@ -66,6 +66,8 @@ firecrawl scrape "https://example.com" --format summary --json
 firecrawl scrape "https://example.com" --format screenshot --json
 ```
 
+Server-side summaries use the internal CLIProxyAPI with `gpt-5.6-luna` (no reasoning). Markdown extraction itself does not require the model proxy.
+
 CLI JSON scrape output is the unwrapped document—read `.markdown`, `.metadata`, `.screenshot`, and similar top-level fields. Direct REST output wraps it under `.data`.
 
 Structured **page scrape** extraction works:
@@ -77,28 +79,6 @@ firecrawl scrape "https://example.com" --format json \
 ```
 
 This is separate from autonomous-agent `--schema`, which is currently broken.
-
-## PDF extraction
-
-Use explicit Markdown output:
-
-```bash
-firecrawl scrape "https://example.com/file.pdf" --format markdown --json
-# CLI output: .markdown; REST output: .data.markdown
-```
-
-Live verification succeeded for:
-
-- a one-page digital PDF;
-- a 14-page technical PDF with 113,575 extracted characters;
-- a scanned PDF with zero native text, producing 24,358 OCR characters.
-
-If a PDF returns no useful text:
-
-1. Verify the URL directly with bounded `curl` and confirm `Content-Type: application/pdf`.
-2. Inspect `.metadata.statusCode`, `.metadata.contentType`, and `.warning`.
-3. Check whether the PDF is password-protected, malformed, oversized, or blocked to the service.
-4. Do not infer OCR failure solely from the `skipTlsVerification` warning; verified PDF extractions returned that warning with valid text.
 
 ## Image analysis
 

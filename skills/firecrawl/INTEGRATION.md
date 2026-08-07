@@ -18,7 +18,7 @@ Direct REST requests worked without an API key. Keep the endpoint configurable a
 
 Validate `success` and handle `.data.web`, `.data.news`, and `.data.images` separately. Image results are best-effort: validate relevance, source rights, and direct URL reachability.
 
-## Scrape and PDF
+## Page scraping and summaries
 
 `POST /v2/scrape`
 
@@ -28,7 +28,9 @@ Validate `success` and handle `.data.web`, `.data.news`, and `.data.images` sepa
 
 REST responses wrap document fields under `.data`. Verified formats include Markdown, HTML, raw HTML, links, page images, summary, structured JSON extraction, screenshot, and branding.
 
-Digital PDF extraction and scanned-PDF OCR both worked. Inspect `.data.markdown`, `.data.metadata`, and `.data.warning`; remote blocking, invalid documents, and password protection remain per-document failure modes.
+Server-side `summary` output uses the private CLIProxyAPI and `gpt-5.6-luna` with no reasoning. Plain Markdown extraction does not require an LLM.
+
+PDF/OCR support is not part of the current deployment and must not be advertised without a fresh end-to-end verification.
 
 PNG screenshot works with `"formats":["screenshot"]`. JPEG also worked with:
 
@@ -49,7 +51,7 @@ Both were live-tested. Analyze rejects `imageUrl` and `imageUrls`; the required 
 - `GET /v2/agent/:id`
 - `DELETE /v2/agent/:id`
 
-Unstructured jobs, status, events, and cancellation work. Autonomous structured schemas currently fail after the model call; do not expose that mode as supported. The tested mini alias resolved to `localModel: "gpt-5.4-mini"`; the pro alias was not smoke-tested.
+Unstructured jobs, status, events, and cancellation work. Autonomous structured schemas currently fail after the model call; do not expose that mode as supported. The live-tested aliases are `spark-1-mini` → `gpt-5.6-luna` (no reasoning) and `spark-1-pro` → `gpt-5.6-terra` (medium reasoning).
 
 ## Persistent interactions
 
@@ -59,7 +61,7 @@ Unstructured jobs, status, events, and cancellation work. Autonomous structured 
 - `POST /v2/interact/:id/execute` runs a bounded batch.
 - `DELETE /v2/interact/:id` deletes it.
 
-The execute response places artifacts under `.actions`, including `screenshots`, `scrapes`, `javascriptReturns`, and `pdfs`; it does not return a `.results` array.
+The execute response places artifacts under `.actions`, including `screenshots`, `scrapes`, and `javascriptReturns`; it does not return a `.results` array.
 
 Verified interaction semantics:
 

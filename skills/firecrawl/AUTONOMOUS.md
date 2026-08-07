@@ -9,7 +9,12 @@ firecrawl agent "Return the page title and purpose. Cite the source URL." \
   --urls "https://example.com" --model spark-1-mini --wait --timeout 300 --json
 ```
 
-This completed successfully and reported `localModel: "gpt-5.4-mini"` with lifecycle and tool events.
+The aliases were live-tested after deployment:
+
+- `spark-1-mini` resolves to `gpt-5.6-luna` with no reasoning;
+- `spark-1-pro` resolves to `gpt-5.6-terra` with medium reasoning.
+
+Both completed successfully. Use the mini alias unless the task benefits from additional reasoning.
 
 For asynchronous creation, the job ID is nested under `.data.jobId`:
 
